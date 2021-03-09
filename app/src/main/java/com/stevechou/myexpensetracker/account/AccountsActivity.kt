@@ -1,0 +1,25 @@
+package com.stevechou.myexpensetracker.account
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.stevechou.myexpensetracker.databinding.AccountsActivityBinding
+import dagger.hilt.android.AndroidEntryPoint
+
+
+@AndroidEntryPoint
+class AccountsActivity : AppCompatActivity() {
+
+    private lateinit var binding: AccountsActivityBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = AccountsActivityBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        val viewModel: AccountsViewModel = ViewModelProvider(this).get(AccountsViewModel::class.java)
+
+        binding.testTextField.text = viewModel.test()
+    }
+
+}
