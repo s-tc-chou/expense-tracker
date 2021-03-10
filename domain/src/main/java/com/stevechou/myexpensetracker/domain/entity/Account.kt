@@ -9,6 +9,6 @@ import java.util.*
 data class Account(
     @PrimaryKey @ColumnInfo(name = "id") @NonNull val id: String,
     @ColumnInfo(name = "name") @NonNull val name: String,
-    @ColumnInfo(name = "created_time") @NonNull val createdTime: Date,
-    @ColumnInfo(name = "modified_time") @NonNull val modifiedTime: Date,
+    @ColumnInfo(name = "created_time") @NonNull val createdTime: Date = Date(System.currentTimeMillis()),
+    @ColumnInfo(name = "modified_time") @NonNull val modifiedTime: Date = Date(System.currentTimeMillis()),
 )

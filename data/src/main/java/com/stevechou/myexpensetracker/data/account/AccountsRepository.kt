@@ -1,5 +1,6 @@
 package com.stevechou.myexpensetracker.data.account
 
+import android.util.Log
 import com.stevechou.myexpensetracker.domain.entity.Account
 import javax.inject.Inject
 

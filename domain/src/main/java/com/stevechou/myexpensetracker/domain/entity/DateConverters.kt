@@ -5,12 +5,8 @@ import java.util.*
 
 class DateConverters {
     @TypeConverter
-    public fun dateToString(date: Date): String {
-        return date.toString()
-    }
+    fun dateToString(date: Date): String = date.time.toString()
 
     @TypeConverter
-    public fun stringToDate(millis: String) : Date {
-        return Date(millis.toLong())
-    }
+    fun stringToDate(millis: String): Date = Date(millis.toLong())
 }
