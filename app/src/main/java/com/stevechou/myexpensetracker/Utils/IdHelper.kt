@@ -1,4 +1,4 @@
-package com.stevechou.myexpensetracker
+package com.stevechou.myexpensetracker.Utils
 
 
 object IdHelper {

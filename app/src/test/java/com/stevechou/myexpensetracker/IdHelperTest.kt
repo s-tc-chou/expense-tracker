@@ -1,5 +1,6 @@
 package com.stevechou.myexpensetracker
 
+import com.stevechou.myexpensetracker.Utils.IdHelper
 import junit.framework.TestCase
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MyExpenseTracker</string>
     <string name="touch_me">Touch me</string>
+    <string name="navigation_drawer_open">open drawer</string>
+    <string name="navigation_drawer_close">close drawer</string>
 </resources>
