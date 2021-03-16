@@ -3,4 +3,8 @@
     <string name="touch_me">Touch me</string>
     <string name="navigation_drawer_open">open drawer</string>
     <string name="navigation_drawer_close">close drawer</string>
+    <string name="add_account_content_src">Add Account</string>
+    <string name="account_content_src">Account</string>
+    <string name="new_user">New User</string>
+
 </resources>

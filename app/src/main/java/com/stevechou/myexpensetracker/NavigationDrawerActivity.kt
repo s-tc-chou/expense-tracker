@@ -8,8 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProvider
-import com.stevechou.myexpensetracker.account.AccountsViewModel
+import com.stevechou.myexpensetracker.account.AccountsFragment
 import com.stevechou.myexpensetracker.databinding.NavigationDrawerActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,6 +40,9 @@ class NavigationDrawerActivity : AppCompatActivity() {
         )
         drawer.addDrawerListener(toggle)
 
+        supportFragmentManager.beginTransaction()
+            .add(R.id.nav_host_fragment, AccountsFragment())
+            .commit()
 
 //        val viewModel: AccountsViewModel = ViewModelProvider(this).get(AccountsViewModel::class.java)
 

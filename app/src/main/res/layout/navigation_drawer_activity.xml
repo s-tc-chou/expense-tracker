@@ -10,13 +10,15 @@
     <include
         layout="@layout/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp" />
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:paddingTop="?attr/actionBarSize" />
+
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <com.google.android.material.navigation.NavigationView
@@ -26,5 +28,5 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_drawer_items"/>
+        app:menu="@menu/nav_drawer_items" />
 </androidx.drawerlayout.widget.DrawerLayout>
