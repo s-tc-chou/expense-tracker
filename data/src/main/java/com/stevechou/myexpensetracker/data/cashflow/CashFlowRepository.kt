@@ -26,7 +26,11 @@ class CashFlowRepository @Inject constructor(
         return cashFlowDao.findRecurringCashFlows()
     }
 
+    fun findOneTimeCashFlows() : List<CashFlow> {
+        return cashFlowDao.findOneTimeCashFlows()
+    }
+
     fun test() : String {
-        return "hello account repo test"
+        return "hello cashflow repo test"
     }
 }

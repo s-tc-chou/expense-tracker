@@ -1,14 +1,13 @@
 package com.stevechou.myexpensetracker.data.account
 
-import android.util.Log
 import com.stevechou.myexpensetracker.domain.entity.Account
 import javax.inject.Inject
 
+// implementation of AccountsDataSource.  Maybe rename with impl suffix?
 class AccountsRepository @Inject constructor(
     private val accountDao: AccountDao
 ) {
 
-    //also need methods to return stuff, like account.  Should match at least some pieces of the Dao
     fun insert(account: Account) {
         accountDao.insertAll(account)
     }
