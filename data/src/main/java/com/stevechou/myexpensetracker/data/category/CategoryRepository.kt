@@ -1,6 +1,5 @@
 package com.stevechou.myexpensetracker.data.category
 
-import com.stevechou.myexpensetracker.data.cashflow.CashFlowDao
 import javax.inject.Inject
 
 class CategoryRepository @Inject constructor(

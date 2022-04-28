@@ -1,6 +1,5 @@
 package com.stevechou.myexpensetracker.data.expense
 
-import com.stevechou.myexpensetracker.data.category.CategoryDao
 import javax.inject.Inject
 
 class ExpenseRepository @Inject constructor(

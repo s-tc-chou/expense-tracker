@@ -9,21 +9,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.stevechou.myexpensetracker.account.AccountsFragment
-import com.stevechou.myexpensetracker.databinding.NavigationDrawerActivityBinding
+import com.stevechou.myexpensetracker.databinding.ExpenseTrackerActivityBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
 //Account selector -> view of your account -> On select, inflate fragment.
 @AndroidEntryPoint
-class NavigationDrawerActivity : AppCompatActivity() {
+class ExpenseTrackerActivity : AppCompatActivity() {
 
-    private lateinit var binding: NavigationDrawerActivityBinding
+    private lateinit var binding: ExpenseTrackerActivityBinding
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawer: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = NavigationDrawerActivityBinding.inflate(layoutInflater)
+        binding = ExpenseTrackerActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 

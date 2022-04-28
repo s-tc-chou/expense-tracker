@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyExpenseTracker">
 
-        <activity android:name=".NavigationDrawerActivity">
+        <activity android:name=".ExpenseTrackerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

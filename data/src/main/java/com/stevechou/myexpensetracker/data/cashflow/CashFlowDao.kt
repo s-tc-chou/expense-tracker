@@ -3,7 +3,6 @@ package com.stevechou.myexpensetracker.data.cashflow
 import androidx.annotation.Keep
 import androidx.room.*
 import com.stevechou.myexpensetracker.domain.entity.CashFlow
-import com.stevechou.myexpensetracker.domain.entity.Category
 
 @Dao
 @Keep
