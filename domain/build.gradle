@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation project(':data')
     implementation 'androidx.core:core-ktx:1.7.0'
     
 

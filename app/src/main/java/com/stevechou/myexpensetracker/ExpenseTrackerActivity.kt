@@ -28,7 +28,6 @@ class ExpenseTrackerActivity : AppCompatActivity() {
         setContentView(view)
 
         drawer = binding.drawerLayout
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         val toolbar: Toolbar = findViewById(R.id.app_toolbar)
         setSupportActionBar(toolbar)
 
@@ -43,16 +42,7 @@ class ExpenseTrackerActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.nav_host_fragment, AccountsFragment())
             .commit()
-
-//        val viewModel: AccountsViewModel = ViewModelProvider(this).get(AccountsViewModel::class.java)
-
-//        binding.testTextField.text = viewModel.test()
-//        binding.getAccount.setOnClickListener {
-//            viewModel.getTestAccount()
-        /*.also {
-            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
-        }*/
-//        }
+        supportFragmentManager.executePendingTransactions()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

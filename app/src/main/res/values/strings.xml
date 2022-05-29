@@ -6,5 +6,8 @@
     <string name="add_account_content_src">Add Account</string>
     <string name="account_content_src">Account</string>
     <string name="new_user">New User</string>
+    <string name="add_account_enter_name">Enter Your Name</string>
+    <string name="enter_user_name">Enter Name</string>
+    <string name="save">Save</string>
 
 </resources>

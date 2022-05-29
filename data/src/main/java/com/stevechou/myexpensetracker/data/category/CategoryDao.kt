@@ -13,7 +13,7 @@ interface CategoryDao {
     @Query("SELECT * FROM category WHERE id = :id")
     fun findCategoryById(id : String) : Category
 
-    @Query("SELECT * FROM category WHERE name != 1")
+    @Query("SELECT * FROM category WHERE name = :name")
     fun findCategoryByName(name: String) : List<Category>
 
     @Delete
