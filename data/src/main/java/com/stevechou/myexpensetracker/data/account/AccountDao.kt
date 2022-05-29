@@ -8,11 +8,14 @@ import com.stevechou.myexpensetracker.domain.entity.Account
 @Keep
 interface AccountDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg account: Account)
+    fun createAccount(vararg account: Account)
 
     @Query("SELECT * FROM accounts WHERE id = :id")
     fun findAccountById(id : String) : Account
 
     @Delete
     fun delete(account: Account)
+
+    @Query("DELETE FROM accounts where id = :accountId")
+    fun deleteById(accountId: String)
 }

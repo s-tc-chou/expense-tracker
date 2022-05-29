@@ -1,12 +1,16 @@
 package com.stevechou.myexpensetracker.domain
 
-import android.accounts.Account
+import com.stevechou.myexpensetracker.domain.entity.Account
+
 
 // interface that defines accounts operations
 interface AccountsDataSource {
-    suspend fun addNewAccount(account: Account)
+    suspend fun createAccount(account: Account)
+    suspend fun findAccount(account: Account) : Account
+    suspend fun findAccountById(accountId: String) : Account
+    suspend fun deleteAccount(account: Account)
+    suspend fun deleteAccountById(accountId: String)
 
+    // test method
     suspend fun test()
-
-    //todo: add more methods
 }

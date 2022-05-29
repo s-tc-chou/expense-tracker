@@ -8,12 +8,16 @@ class AccountsRepository @Inject constructor(
     private val accountDao: AccountDao
 ) {
 
-    fun insert(account: Account) {
-        accountDao.insertAll(account)
+    fun createAccount(account: Account) {
+        accountDao.createAccount(account)
     }
 
     fun deleteAccount(account: Account) {
         accountDao.delete(account)
+    }
+
+    fun deleteAccountById(accountId: String) {
+        accountDao.deleteById(accountId)
     }
 
     fun findAccountById(id : String) : Account {
