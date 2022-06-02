@@ -3,6 +3,7 @@ package com.stevechou.myexpensetracker.data.account
 import android.util.Log
 import com.stevechou.myexpensetracker.domain.AccountsDataSource
 import com.stevechou.myexpensetracker.domain.entity.Account
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 // implementation of AccountsDataSource.  Maybe rename with impl suffix?
@@ -28,7 +29,7 @@ class AccountsRepository @Inject constructor(private val accountDao: AccountDao)
         accountDao.deleteById(accountId)
     }
 
-    override suspend fun fetchAllAccounts(): List<Account> {
+    override suspend fun fetchAllAccounts(): Flow<List<Account>> {
         return accountDao.fetchAllAccounts()
     }
 

@@ -17,6 +17,7 @@ import com.stevechou.myexpensetracker.databinding.FragmentAccountsBinding
 import com.stevechou.myexpensetracker.databinding.FragmentAddAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 @AndroidEntryPoint
 class AccountsFragment : Fragment() {
@@ -42,9 +43,7 @@ class AccountsFragment : Fragment() {
                 parentFragmentManager,
                 AddAccountDialogFragment::class.simpleName
             )
-            viewModel.createAccount("test")
         }
-
 
         return binding.root
     }
@@ -52,10 +51,9 @@ class AccountsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchAccounts()
-        viewLifecycleOwner.lifecycleScope.launch {
-
+        viewModel.accounts.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
-        viewModel.accounts.observe(viewLifecycleOwner) { adapter.submitList(it) }
     }
 
     override fun onDestroyView() {

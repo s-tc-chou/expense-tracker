@@ -15,6 +15,8 @@ import com.stevechou.myexpensetracker.domain.usecase.FetchAllAccounts
 import com.stevechou.myexpensetracker.domain.usecase.FindAccount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import java.security.PrivateKey
 import javax.inject.Inject
@@ -39,24 +41,10 @@ class AccountsViewModel @Inject constructor(
     fun fetchAccounts() {
         viewModelScope.launch(Dispatchers.IO) {
             fetchAllAccounts.execute()
-                .also { _accounts.postValue(it) }
-
+                .distinctUntilChanged()
+                .collect {
+                    _accounts.postValue(it)
+                }
         }
     }
-
-    //fun findAccountById(id : String) : Account {
-    //TODO
-    //}
-
-//    fun deleteAccount() {
-    // TODO
-//    }
-
-    /*fun getTestAccount() {
-        lateinit var result : Account
-        GlobalScope.launch {
-            result = accountsRepository.findAccountById("test123")
-            Log.d("STEVE", result.name)
-        }
-    }*/
 }
