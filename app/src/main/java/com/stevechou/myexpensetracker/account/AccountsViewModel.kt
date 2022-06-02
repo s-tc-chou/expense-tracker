@@ -1,13 +1,8 @@
 package com.stevechou.myexpensetracker.account
 
-import android.app.Application
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stevechou.myexpensetracker.Utils.IdHelper
-import com.stevechou.myexpensetracker.data.account.AccountsRepository
 import com.stevechou.myexpensetracker.domain.entity.Account
 import com.stevechou.myexpensetracker.domain.usecase.CreateAccount
 import com.stevechou.myexpensetracker.domain.usecase.DeleteAccount
@@ -18,7 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
-import java.security.PrivateKey
 import javax.inject.Inject
 
 @HiltViewModel

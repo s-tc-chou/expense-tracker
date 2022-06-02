@@ -23,9 +23,9 @@ class SummaryFragment : Fragment() {
             .apply {
                 // temporarily use Account Adapter instead for testing.
 //                val summaryAdapter = SummaryAdapter()
-                val summaryAdapter = AccountsAdapter()
+//                val summaryAdapter = AccountsAdapter()
                 val manager = GridLayoutManager(activity, 3)
-                summaryList.adapter = summaryAdapter
+//                summaryList.adapter = summaryAdapter
                 summaryList.layoutManager = manager
             }
         return binding.root

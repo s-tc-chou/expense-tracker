@@ -1,30 +1,32 @@
 package com.stevechou.myexpensetracker.account
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.stevechou.myexpensetracker.R
+import com.stevechou.myexpensetracker.ItemClickListener
 import com.stevechou.myexpensetracker.Utils.provideViewModel
 import com.stevechou.myexpensetracker.databinding.FragmentAccountsBinding
-import com.stevechou.myexpensetracker.databinding.FragmentAddAccountBinding
+import com.stevechou.myexpensetracker.domain.entity.Account
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import kotlin.math.log
 
 @AndroidEntryPoint
 class AccountsFragment : Fragment() {
     private var _binding: FragmentAccountsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AccountsViewModel by provideViewModel()
-    internal val adapter = AccountsAdapter()
+    private val listener = object : ItemClickListener<Account> {
+        override fun onItemClicked(item: Account) {
+            Toast.makeText(context, item.name + " clicked", LENGTH_SHORT).show()
+            //TODO: navigate to summary fragment
+        }
+
+    }
+    internal val adapter = AccountsAdapter(listener)
 
     override fun onCreateView(
         inflater: LayoutInflater,
