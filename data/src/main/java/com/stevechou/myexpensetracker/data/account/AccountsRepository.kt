@@ -28,6 +28,10 @@ class AccountsRepository @Inject constructor(private val accountDao: AccountDao)
         accountDao.deleteById(accountId)
     }
 
+    override suspend fun fetchAllAccounts(): List<Account> {
+        return accountDao.fetchAllAccounts()
+    }
+
     override suspend fun test() {
         Log.d("Steve", "Test ")
     }

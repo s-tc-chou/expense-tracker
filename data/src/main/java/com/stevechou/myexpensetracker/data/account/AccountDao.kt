@@ -18,4 +18,7 @@ interface AccountDao {
 
     @Query("DELETE FROM accounts where id = :accountId")
     fun deleteById(accountId: String)
+
+    @Query("SELECT * FROM accounts")
+    fun fetchAllAccounts() : List<Account>
 }

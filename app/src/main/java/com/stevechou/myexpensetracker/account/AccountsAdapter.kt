@@ -28,12 +28,10 @@ class AccountsAdapter :
 
         fun bindView(account: Account) {
             binding.apply {
-                //...need to store image src too
                 accountName.text = account.name
             }
         }
 
-        //onclick actions?
     }
 
     class AccountDiffCallback : DiffUtil.ItemCallback<Account>() {

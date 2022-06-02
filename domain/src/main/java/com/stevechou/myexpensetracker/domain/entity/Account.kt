@@ -4,6 +4,8 @@ import androidx.annotation.NonNull
 import androidx.room.*
 import java.util.*
 
+// Ideally for more complex objects, maybe create a wrapper.
+// since you have fields that are potentially useless but necessary for room, or we want to add utility functions.
 @Entity(tableName = "accounts", indices = [Index(value = ["id", "name"])])
 @TypeConverters(DateConverters::class)
 data class Account(

@@ -5,15 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_name_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/create_user_hint">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/add_account_enter_name"/>
+            android:focusedByDefault="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     

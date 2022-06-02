@@ -2,21 +2,28 @@ package com.stevechou.myexpensetracker.account
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.stevechou.myexpensetracker.R
+import com.stevechou.myexpensetracker.Utils.provideViewModel
 import com.stevechou.myexpensetracker.databinding.FragmentAccountsBinding
 import com.stevechou.myexpensetracker.databinding.FragmentAddAccountBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class AccountsFragment : Fragment() {
-
     private var _binding: FragmentAccountsBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: AccountsViewModel by provideViewModel()
+    internal val adapter = AccountsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,33 +32,30 @@ class AccountsFragment : Fragment() {
     ): View {
         _binding = FragmentAccountsBinding.inflate(layoutInflater, container, false)
             .apply {
-                val accountsAdapter = AccountsAdapter()
                 val manager = GridLayoutManager(activity, 3)
-                accountsList.adapter = accountsAdapter
+                accountsList.adapter = adapter
                 accountsList.layoutManager = manager
             }
 
-        val dialogView = FragmentAddAccountBinding.inflate(layoutInflater)
-        val dialogBuilder = AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.enter_user_name))
-            .setPositiveButton(getString(R.string.save)) { dialog, _ ->
-                //TODO: replace with viewmodel call to create account
-                // should create account, then you can click on the recycler view item
-                // which should navigate you to summaryFragment.
-                Toast.makeText(context, "Saving", LENGTH_SHORT).show()
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .setView(dialogView.root)
-            .create()
-
         binding.addNewUser.setOnClickListener {
-            dialogBuilder.show()
+            AddAccountDialogFragment().show(
+                parentFragmentManager,
+                AddAccountDialogFragment::class.simpleName
+            )
+            viewModel.createAccount("test")
         }
 
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.fetchAccounts()
+        viewLifecycleOwner.lifecycleScope.launch {
+
+        }
+        viewModel.accounts.observe(viewLifecycleOwner) { adapter.submitList(it) }
     }
 
     override fun onDestroyView() {

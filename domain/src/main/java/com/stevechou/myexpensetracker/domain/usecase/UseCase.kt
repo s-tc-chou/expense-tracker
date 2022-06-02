@@ -10,7 +10,7 @@ abstract class UseCase<RequestValues, ResponseValue> {
     }
 
     @NonNull
-    open suspend fun execute() {
+    open suspend fun execute() : ResponseValue {
         throw UnsupportedOperationException()
     }
 }

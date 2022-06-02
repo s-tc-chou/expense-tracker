@@ -7,7 +7,7 @@ import java.util.*
 class CreateAccount(private val accountsDataSource: AccountsDataSource) :
     UseCase<String, Unit>() {
 
-    override suspend fun execute(request: String){
-        accountsDataSource.createAccount(Account(UUID.randomUUID().toString(), request))
+    override suspend fun execute(name: String){
+        accountsDataSource.createAccount(Account(UUID.randomUUID().toString(), name))
     }
 }

@@ -10,6 +10,7 @@ interface AccountsDataSource {
     suspend fun findAccountById(accountId: String) : Account
     suspend fun deleteAccount(account: Account)
     suspend fun deleteAccountById(accountId: String)
+    suspend fun fetchAllAccounts() : List<Account>
 
     // test method
     suspend fun test()
