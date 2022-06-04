@@ -5,14 +5,15 @@ buildscript {
         mavenCentral()
     }
 
-    ext.kotlin_version = "1.6.20"
-    ext.hilt_version = '2.33-beta'
+    ext.kotlin_version = "1.6.21"
+    ext.hilt_version = '2.42'
     ext.room_version = "2.4.2"
     ext.nav_version = "2.4.2"
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
         // navigation
 //        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
