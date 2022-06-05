@@ -13,10 +13,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
-        // navigation
-//        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        // navigation safeArgs
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
         //dependency injection
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"

@@ -1,13 +1,13 @@
 package com.stevechou.myexpensetracker.domain.usecase
 
 import com.stevechou.myexpensetracker.domain.AccountsDataSource
-import com.stevechou.myexpensetracker.domain.entity.Account
+import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 
 // kinda useless.  But we need something that can fetch a singular account by ID.
 class FindAccount(private val accountsDataSource: AccountsDataSource) :
-    UseCase<Account, Account>() {
+    UseCase<AccountImpl, AccountImpl>() {
 
-    override suspend fun execute(request: Account): Account {
+    override suspend fun execute(request: AccountImpl): AccountImpl {
         return accountsDataSource.findAccount(request)
     }
 }

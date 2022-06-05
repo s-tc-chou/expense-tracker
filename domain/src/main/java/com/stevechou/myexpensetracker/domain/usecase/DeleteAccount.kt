@@ -1,14 +1,12 @@
 package com.stevechou.myexpensetracker.domain.usecase
 
 import com.stevechou.myexpensetracker.domain.AccountsDataSource
-import com.stevechou.myexpensetracker.domain.entity.Account
-import java.util.*
+import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 
 class DeleteAccount(private val accountsDataSource: AccountsDataSource) :
-    UseCase<String, Unit>() {
+    UseCase<AccountImpl, Unit>() {
 
-    override suspend fun execute(request: String) {
-        val account = Account(UUID.randomUUID().toString(), request)
+    override suspend fun execute(account: AccountImpl) {
         accountsDataSource.deleteAccount(account)
     }
 }

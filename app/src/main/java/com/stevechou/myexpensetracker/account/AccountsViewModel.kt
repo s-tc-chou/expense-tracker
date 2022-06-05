@@ -3,7 +3,7 @@ package com.stevechou.myexpensetracker.account
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stevechou.myexpensetracker.domain.entity.Account
+import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 import com.stevechou.myexpensetracker.domain.usecase.CreateAccount
 import com.stevechou.myexpensetracker.domain.usecase.DeleteAccount
 import com.stevechou.myexpensetracker.domain.usecase.FetchAllAccounts
@@ -23,7 +23,7 @@ class AccountsViewModel @Inject constructor(
     private val fetchAllAccounts: FetchAllAccounts
 ) : ViewModel() {
 
-    private val _accounts = MutableLiveData<List<Account>>()
+    private val _accounts = MutableLiveData<List<AccountImpl>>()
     val accounts get() = _accounts
 
     fun createAccount(name: String) {

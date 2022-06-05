@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.stevechou.myexpensetracker.ItemClickListener
 import com.stevechou.myexpensetracker.Utils.provideViewModel
 import com.stevechou.myexpensetracker.databinding.FragmentAccountsBinding
-import com.stevechou.myexpensetracker.domain.entity.Account
+import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,10 +18,10 @@ class AccountsFragment : Fragment() {
     private var _binding: FragmentAccountsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: AccountsViewModel by provideViewModel()
-    private val listener = object : ItemClickListener<Account> {
-        override fun onItemClicked(item: Account) {
-            Toast.makeText(context, item.name + " clicked", LENGTH_SHORT).show()
-            //TODO: navigate to summary fragment
+    private val listener = object : ItemClickListener<AccountImpl> {
+        override fun onItemClicked(item: AccountImpl) {
+            val action = AccountsFragmentDirections.actionAccountsFragmentToSummaryFragment(item)
+            findNavController().navigate(action)
         }
 
     }

@@ -8,9 +8,14 @@
         android:id="@+id/accountsFragment"
         android:name="com.stevechou.myexpensetracker.account.AccountsFragment"
         android:label="AccountsFragment">
+
         <action
             android:id="@+id/action_accountsFragment_to_summaryFragment"
-            app:destination="@id/summaryFragment" />
+            app:destination="@id/summaryFragment">
+            <argument
+                android:name="arg_account"
+                app:argType="com.stevechou.myexpensetracker.domain.entity.AccountImpl" />
+        </action>
     </fragment>
 
     <fragment

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.stevechou.myexpensetracker.account.AccountsAdapter
 import com.stevechou.myexpensetracker.databinding.FragmentSummaryBinding
 
 class SummaryFragment : Fragment() {
@@ -20,14 +20,10 @@ class SummaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSummaryBinding.inflate(layoutInflater, container, false)
-            .apply {
-                // temporarily use Account Adapter instead for testing.
-//                val summaryAdapter = SummaryAdapter()
-//                val summaryAdapter = AccountsAdapter()
-                val manager = GridLayoutManager(activity, 3)
-//                summaryList.adapter = summaryAdapter
-                summaryList.layoutManager = manager
-            }
+
+        val args = requireArguments().get("arg_account")
+        Toast.makeText(context, "in summary fragment?", LENGTH_SHORT).show()
+
         return binding.root
     }
 

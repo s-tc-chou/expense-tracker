@@ -3,7 +3,6 @@ package com.stevechou.myexpensetracker.data.account
 import androidx.annotation.Keep
 import androidx.room.*
 import com.stevechou.myexpensetracker.domain.entity.Account
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 @Keep
@@ -12,7 +11,7 @@ interface AccountDao {
     fun createAccount(vararg account: Account)
 
     @Query("SELECT * FROM accounts WHERE id = :id")
-    fun findAccountById(id : String) : Account
+    fun findAccountById(id: String): Account
 
     @Delete
     fun delete(account: Account)
@@ -21,5 +20,5 @@ interface AccountDao {
     fun deleteById(accountId: String)
 
     @Query("SELECT * FROM accounts")
-    fun fetchAllAccounts() : Flow<List<Account>>
+    fun fetchAllAccounts(): List<Account>
 }
