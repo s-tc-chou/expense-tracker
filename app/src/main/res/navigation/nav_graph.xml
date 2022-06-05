@@ -10,13 +10,27 @@
         android:label="AccountsFragment">
 
         <action
-            android:id="@+id/action_accountsFragment_to_summaryFragment"
-            app:destination="@id/summaryFragment">
+            android:id="@+id/action_accountsFragment_to_accountActionsDialogFragment"
+            app:destination="@id/accountActionsDialogFragment">
             <argument
                 android:name="arg_account"
                 app:argType="com.stevechou.myexpensetracker.domain.entity.AccountImpl" />
         </action>
     </fragment>
+
+    <dialog
+        android:id="@+id/accountActionsDialogFragment"
+        android:name="com.stevechou.myexpensetracker.account.AccountActionsDialogFragment"
+        android:label="AccountActionsDialogFragment">
+
+        <action
+            android:id="@+id/action_accountActionsDialogFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment">
+            <argument
+                android:name="arg_account"
+                app:argType="com.stevechou.myexpensetracker.domain.entity.AccountImpl" />
+        </action>
+    </dialog>
 
     <fragment
         android:id="@+id/summaryFragment"

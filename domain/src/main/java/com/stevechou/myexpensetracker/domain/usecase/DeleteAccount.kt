@@ -8,5 +8,6 @@ class DeleteAccount(private val accountsDataSource: AccountsDataSource) :
 
     override suspend fun execute(account: AccountImpl) {
         accountsDataSource.deleteAccount(account)
+        // todo: also delete summary related items.
     }
 }

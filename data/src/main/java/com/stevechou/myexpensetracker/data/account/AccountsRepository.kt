@@ -5,7 +5,7 @@ import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 import com.stevechou.myexpensetracker.domain.entity.toAccount
 import com.stevechou.myexpensetracker.domain.entity.toAccountImpl
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 // implementation of AccountsDataSource
@@ -33,6 +33,8 @@ class AccountsRepository @Inject constructor(private val accountDao: AccountDao)
     }
 
     override suspend fun fetchAllAccounts(): Flow<List<AccountImpl>> {
-        return flowOf(accountDao.fetchAllAccounts().map { it.toAccountImpl() })
+        return accountDao.fetchAllAccounts().map {
+            it.map { account -> account.toAccountImpl() }
+        }
     }
 }

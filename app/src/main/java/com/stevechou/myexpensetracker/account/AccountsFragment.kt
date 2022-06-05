@@ -20,12 +20,13 @@ class AccountsFragment : Fragment() {
     private val viewModel: AccountsViewModel by provideViewModel()
     private val listener = object : ItemClickListener<AccountImpl> {
         override fun onItemClicked(item: AccountImpl) {
-            val action = AccountsFragmentDirections.actionAccountsFragmentToSummaryFragment(item)
+            val action =
+                AccountsFragmentDirections.actionAccountsFragmentToAccountActionsDialogFragment(item)
             findNavController().navigate(action)
         }
 
     }
-    internal val adapter = AccountsAdapter(listener)
+    private val adapter = AccountsAdapter(listener)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,5 +62,4 @@ class AccountsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -7,7 +7,6 @@ import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 import com.stevechou.myexpensetracker.domain.usecase.CreateAccount
 import com.stevechou.myexpensetracker.domain.usecase.DeleteAccount
 import com.stevechou.myexpensetracker.domain.usecase.FetchAllAccounts
-import com.stevechou.myexpensetracker.domain.usecase.FindAccount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -18,7 +17,6 @@ import javax.inject.Inject
 @HiltViewModel
 class AccountsViewModel @Inject constructor(
     private val createAccount: CreateAccount,
-    private val findAccount: FindAccount,
     private val deleteAccount: DeleteAccount,
     private val fetchAllAccounts: FetchAllAccounts
 ) : ViewModel() {
@@ -39,6 +37,12 @@ class AccountsViewModel @Inject constructor(
                 .collect {
                     _accounts.postValue(it)
                 }
+        }
+    }
+
+    fun deleteAccount(account: AccountImpl) {
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteAccount.execute(account)
         }
     }
 }

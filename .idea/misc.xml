@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/account_item.xml" value="0.1" />
+        <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/dialog_fragment_account_actions.xml" value="0.3333333333333333" />
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/expense_tracker_activity.xml" value="0.22" />
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/fragment_accounts.xml" value="0.32395833333333335" />
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/fragment_add_account.xml" value="0.3260416666666667" />
@@ -11,6 +12,9 @@
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/fragment_view_balance.xml" value="0.2246376811594203" />
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/navigation_drawer_activity.xml" value="0.378125" />
         <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/summary_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/test1.xml" value="0.37395833333333334" />
+        <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/layout/test2.xml" value="0.37395833333333334" />
+        <entry key="..\:/Github/Source/Repos/MyExpenseTracker/app/src/main/res/menu/nav_drawer_items.xml" value="0.375" />
       </map>
     </option>
   </component>
