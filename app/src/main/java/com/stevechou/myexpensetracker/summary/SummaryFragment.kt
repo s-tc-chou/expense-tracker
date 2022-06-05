@@ -20,9 +20,7 @@ class SummaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSummaryBinding.inflate(layoutInflater, container, false)
-
         val args = requireArguments().get("arg_account")
-        Toast.makeText(context, "in summary fragment?", LENGTH_SHORT).show()
 
         return binding.root
     }

@@ -38,11 +38,6 @@ class ExpenseTrackerActivity : AppCompatActivity() {
             R.string.navigation_drawer_close
         )
         drawer.addDrawerListener(toggle)
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.nav_host_fragment, AccountsFragment())
-            .commit()
-        supportFragmentManager.executePendingTransactions()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
