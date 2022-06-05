@@ -68,6 +68,11 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 
+    // 3rd party
+    implementation "com.leinardi.android:speed-dial:3.3.0"
+    // compose version
+    //implementation "com.leinardi.android:speed-dial.compose:1.0.0-alpha04"
+
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 }

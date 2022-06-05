@@ -10,4 +10,7 @@
     <string name="create_user_title">Create New User</string>
     <string name="save">Save</string>
 
+    <!-- summary -->
+    <string name="fab_add_cash_flow">Add New Cash Flow</string>
+    <string name="fab_add_expense">Add New Expense</string>
 </resources>
