@@ -3,7 +3,7 @@ package com.stevechou.myexpensetracker.summary
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stevechou.myexpensetracker.domain.entity.ExpenseImpl
+import com.stevechou.myexpensetracker.domain.entity.LineItemImpl
 import com.stevechou.myexpensetracker.domain.entity.Frequency
 import com.stevechou.myexpensetracker.domain.usecase.CreateExpense
 import com.stevechou.myexpensetracker.domain.usecase.DeleteExpense
@@ -26,13 +26,13 @@ class SummaryViewModel @Inject constructor(
     // TODO: fetch current account id automatically.
     fun createNewExpense(name: String) {
         // create a test expense for now.
-        val expense = ExpenseImpl(
+        val expense = LineItemImpl(
             UUID.randomUUID().toString(),
             name,
             420.69f,
             Frequency.MONTHLY,
             accountId,
-            expenseDate = Date(System.currentTimeMillis())
+            occurrenceDate = Date(System.currentTimeMillis())
         )
         viewModelScope.launch(Dispatchers.IO) {
             createExpense.execute(expense)

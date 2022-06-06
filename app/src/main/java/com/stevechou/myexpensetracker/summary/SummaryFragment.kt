@@ -8,11 +8,14 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.stevechou.myexpensetracker.ItemClickListener
 import com.stevechou.myexpensetracker.R
 import com.stevechou.myexpensetracker.Utils.provideViewModel
 import com.stevechou.myexpensetracker.databinding.FragmentSummaryBinding
 import com.stevechou.myexpensetracker.domain.entity.AccountImpl
+import com.stevechou.myexpensetracker.domain.entity.LineItemImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +23,13 @@ class SummaryFragment : Fragment() {
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SummaryViewModel by provideViewModel()
+    private val listener = object : ItemClickListener<LineItemImpl> {
+        override fun onItemClicked(item: LineItemImpl) {
+            Toast.makeText(requireContext(), item.name + " clicked", LENGTH_SHORT).show()
+        }
+    }
+    private val adapter = SummaryAdapter(listener)
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,13 +37,17 @@ class SummaryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSummaryBinding.inflate(layoutInflater, container, false)
+            .apply {
+                val manager = LinearLayoutManager(activity)
+                summaryList.adapter = adapter
+                summaryList.layoutManager = manager
+            }
 
         val args = requireArguments().get("arg_account") as AccountImpl // pass into vm?
 
         viewModel.accountId = args.id
 
         setupSpeedDial()
-
         return binding.root
     }
 

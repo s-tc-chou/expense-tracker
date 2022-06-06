@@ -39,13 +39,13 @@ class UseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideCreateExpense(expenseDataSource: ExpenseDataSource): CreateExpense {
-        return CreateExpense(expenseDataSource)
+    fun provideCreateExpense(lineItemDataSource: ExpenseDataSource): CreateExpense {
+        return CreateExpense(lineItemDataSource)
     }
 
     @Provides
     @ViewModelScoped
-    fun provideDeleteExpense(expenseDataSource: ExpenseDataSource): DeleteExpense {
-        return DeleteExpense(expenseDataSource)
+    fun provideDeleteExpense(lineItemDataSource: ExpenseDataSource): DeleteExpense {
+        return DeleteExpense(lineItemDataSource)
     }
 }

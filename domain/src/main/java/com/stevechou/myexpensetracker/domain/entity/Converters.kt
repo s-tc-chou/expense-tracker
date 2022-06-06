@@ -8,9 +8,9 @@ fun Account.toAccountImpl(): AccountImpl {
     return AccountImpl(this.id, this.name, this.createdTime, this.modifiedTime)
 }
 
-// note: don't need impl for expense since I don't plan to pass it around, but for consistency sake we'll use it.
-fun ExpenseImpl.toExpense(): Expense {
-    return Expense(
+// note: don't need impl for line items since I don't plan to pass it around, but for consistency sake we'll use it.
+fun LineItemImpl.toLineItem(): LineItem {
+    return LineItem(
         id = this.id,
         name = this.name,
         amount = this.amount,
@@ -18,12 +18,12 @@ fun ExpenseImpl.toExpense(): Expense {
         accountId = this.accountId,
         categoryId = this.categoryId,
         note = this.note,
-        expenseDate = this.expenseDate
+        occurrenceDate = this.occurrenceDate
     )
 }
 
-fun Expense.toExpenseImpl(): ExpenseImpl {
-    return ExpenseImpl(
+fun LineItem.toLineItemImpl(): LineItemImpl {
+    return LineItemImpl(
         id = this.id,
         name = this.name,
         amount = this.amount,
@@ -31,6 +31,6 @@ fun Expense.toExpenseImpl(): ExpenseImpl {
         accountId = this.accountId,
         categoryId = this.categoryId,
         note = this.note,
-        expenseDate = this.expenseDate
+        occurrenceDate = this.occurrenceDate
     )
 }

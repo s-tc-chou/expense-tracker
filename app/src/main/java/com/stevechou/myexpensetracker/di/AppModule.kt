@@ -3,12 +3,12 @@ package com.stevechou.myexpensetracker.di
 import android.content.Context
 import androidx.room.Room
 import com.stevechou.myexpensetracker.data.account.AccountDao
-import com.stevechou.myexpensetracker.data.account.MasterDatabase
 import com.stevechou.myexpensetracker.data.account.AccountsRepository
-import com.stevechou.myexpensetracker.data.expense.ExpenseDao
-import com.stevechou.myexpensetracker.data.expense.ExpenseRepository
+import com.stevechou.myexpensetracker.data.account.MasterDatabase
+import com.stevechou.myexpensetracker.data.expense.LineItemDao
+import com.stevechou.myexpensetracker.data.expense.LineItemRepository
 import com.stevechou.myexpensetracker.domain.AccountsDataSource
-import com.stevechou.myexpensetracker.domain.ExpenseDataSource
+import com.stevechou.myexpensetracker.domain.LineItemDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,7 +46,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesExpenseDatasource(expenseDao: ExpenseDao): ExpenseDataSource {
-        return ExpenseRepository(expenseDao)
+    fun providesLineItemDatasource(lineItemDao: LineItemDao): LineItemDataSource {
+        return LineItemRepository(lineItemDao)
     }
 }

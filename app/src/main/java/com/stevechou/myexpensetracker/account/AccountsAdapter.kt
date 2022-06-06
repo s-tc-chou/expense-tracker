@@ -22,6 +22,14 @@ class AccountsAdapter(val itemClickListener: ItemClickListener<AccountImpl>) :
         holder.bindView(item)
     }
 
+    override fun getItemCount(): Int {
+        return if (currentList.size == 0) {
+            0
+        } else {
+            super.getItemCount()
+        }
+    }
+
     inner class AccountsViewHolder(
         private val binding: AccountItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -49,14 +57,6 @@ class AccountsAdapter(val itemClickListener: ItemClickListener<AccountImpl>) :
 
         override fun areContentsTheSame(oldItem: AccountImpl, newItem: AccountImpl): Boolean {
             return oldItem == newItem
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return if (currentList.size == 0) {
-            0
-        } else {
-            super.getItemCount()
         }
     }
 }
