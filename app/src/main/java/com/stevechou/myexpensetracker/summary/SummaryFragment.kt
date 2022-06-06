@@ -10,14 +10,16 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.leinardi.android.speeddial.SpeedDialActionItem
 import com.stevechou.myexpensetracker.R
+import com.stevechou.myexpensetracker.Utils.provideViewModel
 import com.stevechou.myexpensetracker.databinding.FragmentSummaryBinding
+import com.stevechou.myexpensetracker.domain.entity.AccountImpl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SummaryFragment : Fragment() {
-
     private var _binding: FragmentSummaryBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: SummaryViewModel by provideViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +28,11 @@ class SummaryFragment : Fragment() {
     ): View {
         _binding = FragmentSummaryBinding.inflate(layoutInflater, container, false)
 
+        val args = requireArguments().get("arg_account") as AccountImpl // pass into vm?
+
+        viewModel.accountId = args.id
+
         setupSpeedDial()
-        val args = requireArguments().get("arg_account")
 
         return binding.root
     }
@@ -37,13 +42,25 @@ class SummaryFragment : Fragment() {
         val speedDial = binding.speedDial
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.fab_cash_flow, R.drawable.ic_cash_flow)
-                .setFabBackgroundColor(ResourcesCompat.getColor(resources, R.color.cash_flow_green, requireActivity().theme))
+                .setFabBackgroundColor(
+                    ResourcesCompat.getColor(
+                        resources,
+                        R.color.cash_flow_green,
+                        requireActivity().theme
+                    )
+                )
                 .setLabel(resources.getString(R.string.fab_add_cash_flow))
                 .create()
         )
         speedDial.addActionItem(
             SpeedDialActionItem.Builder(R.id.fab_expense, R.drawable.ic_expense)
-                .setFabBackgroundColor(ResourcesCompat.getColor(resources, R.color.expense_red, requireActivity().theme))
+                .setFabBackgroundColor(
+                    ResourcesCompat.getColor(
+                        resources,
+                        R.color.expense_red,
+                        requireActivity().theme
+                    )
+                )
                 .setLabel(resources.getString(R.string.fab_add_expense))
                 .create()
         )
@@ -57,6 +74,7 @@ class SummaryFragment : Fragment() {
                 }
                 R.id.fab_expense -> {
                     Toast.makeText(context, "expense clicked", LENGTH_SHORT).show()
+                    viewModel.createNewExpense("test expense")
                     speedDial.close()
                     return@setOnActionSelectedListener true
                 }

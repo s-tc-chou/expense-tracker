@@ -8,16 +8,10 @@ import com.stevechou.myexpensetracker.domain.entity.Expense
 @Keep
 interface ExpenseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg expense: Expense)
+    fun createExpense(vararg expense: Expense)
 
     @Query("SELECT * FROM expense WHERE id = :id")
     fun findCashFlowById(id : String) : Expense
-
-    @Query("SELECT * FROM expense WHERE recurring = 1")
-    fun findRecurringExpenses() : List<Expense>
-
-    @Query("SELECT * FROM expense WHERE recurring != 1")
-    fun findOneTimeExpenses() : List<Expense>
 
     @Delete
     fun delete(expense: Expense)

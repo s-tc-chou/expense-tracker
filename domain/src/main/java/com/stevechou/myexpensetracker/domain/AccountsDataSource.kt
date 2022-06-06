@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 // interface that defines accounts operations
 interface AccountsDataSource {
+    // todo: add option to rename account.
     suspend fun createAccount(AccountImpl: AccountImpl)
     suspend fun findAccount(AccountImpl: AccountImpl): AccountImpl
     suspend fun findAccountById(accountId: String): AccountImpl

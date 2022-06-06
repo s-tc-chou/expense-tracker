@@ -3,9 +3,12 @@ package com.stevechou.myexpensetracker.di
 import android.content.Context
 import androidx.room.Room
 import com.stevechou.myexpensetracker.data.account.AccountDao
-import com.stevechou.myexpensetracker.data.account.AccountDatabase
+import com.stevechou.myexpensetracker.data.account.MasterDatabase
 import com.stevechou.myexpensetracker.data.account.AccountsRepository
+import com.stevechou.myexpensetracker.data.expense.ExpenseDao
+import com.stevechou.myexpensetracker.data.expense.ExpenseRepository
 import com.stevechou.myexpensetracker.domain.AccountsDataSource
+import com.stevechou.myexpensetracker.domain.ExpenseDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,21 +22,31 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideAccountDatabase(
+    fun provideDatabase(
         @ApplicationContext app: Context
     ) = Room.databaseBuilder(
         app,
-        AccountDatabase::class.java,
+        MasterDatabase::class.java,
         "myexpensetracker.db"
     ).build()
 
     @Singleton
     @Provides
-    fun provideAccountDao(db: AccountDatabase) = db.accountDao()
+    fun provideAccountDao(db: MasterDatabase) = db.accountDao()
+
+    @Singleton
+    @Provides
+    fun provideExpenseDao(db: MasterDatabase) = db.expenseDao()
 
     @Provides
     @Singleton
-    fun providesAccountsDatasource(accountsDao: AccountDao) : AccountsDataSource {
+    fun providesAccountsDatasource(accountsDao: AccountDao): AccountsDataSource {
         return AccountsRepository(accountsDao)
+    }
+
+    @Provides
+    @Singleton
+    fun providesExpenseDatasource(expenseDao: ExpenseDao): ExpenseDataSource {
+        return ExpenseRepository(expenseDao)
     }
 }
